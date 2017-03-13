@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 /** Simple controller to illustrate templates. */
 @RestController
-@RequestMapping(value = "/person")
+@RequestMapping(value = "/personas")
 public class PersonaController {
 
   /** Person repository. */

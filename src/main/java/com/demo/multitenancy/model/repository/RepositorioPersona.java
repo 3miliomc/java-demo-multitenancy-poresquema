@@ -8,10 +8,10 @@ import com.demo.multitenancy.model.Persona;
 
 import java.util.List;
 
-/** Repository manager for Person. */
+/** Repository manager for Persona. */
 public interface RepositorioPersona extends PagingAndSortingRepository<Persona, Long> {
 
-  /** Get collections of Person by name. */
-  List<Persona> findByLastName(@Param("name") String name);
+  /** Get collections of Persona by apellido. */
+  List<Persona> findByApellido(@Param("apellido") String name);
 
 }

@@ -3,41 +3,35 @@ package com.demo.multitenancy.model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-/** Person data model. */
+/** Persona data model. */
 @Entity
-@Table(name = "gente")
+@Table(name = "personas")
 public class Persona extends EntityBase {
 
   /** First name. */
-  private String firstName;
+  private String nombre;
 
-  /** Last name. */
-  private String lastName;
+  private String apellido;
 
-  /** First name getter. */
-  public String getFirstName() {
-    return this.firstName;
+  public String getNombre() {
+    return this.nombre;
   }
 
-  /** First name setter. */
-  public void setFirstName(final String firstName) {
-    this.firstName = firstName;
+  public void setNombre(final String firstName) {
+    this.nombre = firstName;
   }
 
-  /** Last name getter. */
-  public String getLastName() {
-    return this.lastName;
+  public String getApellido() {
+    return this.apellido;
   }
 
-  /** Last name setter. */
-  public void setLastName(final String lastname) {
-    this.lastName = lastname;
+  public void setApellido(final String lastname) {
+    this.apellido = lastname;
   }
 
-  /** String representation. */
   @Override
   public String toString() {
-    return "Person [firstName=" + this.firstName + ", lastName=" + this.lastName
+    return "Persona [nombre=" + this.nombre + ", apellido=" + this.apellido
         + "]";
   }
 }

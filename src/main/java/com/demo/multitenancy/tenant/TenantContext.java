@@ -2,7 +2,7 @@ package com.demo.multitenancy.tenant;
 
 public class TenantContext {
 
-	  final public static String DEFAULT_TENANT = "test";
+	  final public static String DEFAULT_TENANT = "mysql";
 
 	  private static ThreadLocal<String> currentTenant = new ThreadLocal<String>()
 	  {
