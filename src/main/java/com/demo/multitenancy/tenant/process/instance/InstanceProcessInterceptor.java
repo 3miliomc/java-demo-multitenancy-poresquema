@@ -1,4 +1,4 @@
-package com.demo.multitenancy.tenant;
+package com.demo.multitenancy.tenant.process.instance;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -12,35 +12,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-@Service("tenantInterceptor")
-public class TenantInterceptor extends HandlerInterceptorAdapter {
+@Service("instanceInterceptor")
+public class InstanceProcessInterceptor extends HandlerInterceptorAdapter {
 
-  private static final String TENANT_HEADER = "X-TenantID";
+  private static final String INSTANCE_HEADER = "X-InstanceID";
 
   @Override
   public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler)
       throws Exception {
 
-    String tenant = req.getHeader(TENANT_HEADER);
-    boolean tenantSet = false;
+    String instanceProcess = req.getHeader(INSTANCE_HEADER);
+    boolean instanceSet = false;
 
-    if(StringUtils.isEmpty(tenant)) {
+    if(StringUtils.isEmpty(instanceProcess)) {
       res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
       res.setContentType(MediaType.APPLICATION_JSON_VALUE);
-      res.getWriter().write("{\"error\": \"No tenant supplied\"}");
+      res.getWriter().write("{\"error\": \"No instance process supplied\"}");
       res.getWriter().flush();
     } else {
-      TenantContext.setCurrentTenant(tenant);
-      tenantSet = true;
+      InstanceProcessContext.setCurrentInstance(instanceProcess);
+      instanceSet = true;
     }
 
-    return tenantSet;
+    return instanceSet;
   }
 
   @Override
   public void postHandle(
       HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
           throws Exception {
-    TenantContext.clear();
+	  InstanceProcessContext.clear();
   }
 }
